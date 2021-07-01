@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+:root {
+    --primary: #efb6b2;
+    --secondary: #4e4e4e;
+    --error: #ff4a4a;
+}
+
+/* base styles & title */
+body {
+    font-family: "Noto Serif";
+    color: var(--secondary);
+}
+
+.App {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.title h1,
+.logoutBtn {
+    color: var(--primary);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: normal;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.title .logoutBtn:hover {
+    background-color: rgb(255, 243, 221);
+    border-radius: 2px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title h2,
+.title p {
+    text-align: center;
+}
+
+.title h2 {
+    margin-top: 60px;
+    font-size: 2.6rem;
+}
+
+/* upload form styles */
+form {
+    margin: 30px auto 10px;
+    text-align: center;
+}
+
+.uploadBtn input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.uploadBtn {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    margin: 10px auto;
+    line-height: 30px;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.uploadBtn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.output {
+    height: 60px;
+    font-size: 0.8rem;
+}
+
+
+/* progress bar styles */
+.progress-bar {
+    height: 5px;
+    background: var(--primary);
+    margin-top: 20px;
+}
+
+/* image grid styles */
+.img-grid {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
+}
+
+.grid-img {
+    width: 100%;
+    height: 400px;
+}
+
+.post-card {
+    background-color: rgb(126, 150, 147);
+}
+
+.deleteBtn {
+   float: right;
+    background: transparent;
+    border: none;
+    border: 2px solid green;
+    background-color: honeydew;
+    cursor: pointer;
+}
+
+/* modal styles */
