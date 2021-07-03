@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState();
 	const [loading, setLoading] = useState(true);
 	const history = useHistory();
+
 	const login = async (email, password) => {
 		await auth.signInWithEmailAndPassword(email, password);
 		console.log("Login");
@@ -22,6 +23,11 @@ export const AuthProvider = ({ children }) => {
 	const signout = async () => {
 		await auth.signOut();
 	};
+
+    let today = new Date();
+	let currDate =
+		today.toLocaleString();
+        console.log(currDate);
 
 	useEffect(() => {
 		let resp = auth.onAuthStateChanged((user) => {
@@ -37,6 +43,7 @@ export const AuthProvider = ({ children }) => {
 		login,
 		signup,
 		signout,
+        currDate
 	};
 	return (
 		<AuthContext.Provider value={value}>
