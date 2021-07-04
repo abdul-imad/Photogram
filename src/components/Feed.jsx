@@ -29,7 +29,6 @@ export default function Feed() {
 				/>
 			</div>
 			<h2>Your Photos</h2>
-            <p>Click the '+' button to upload images</p>
 		</div>
 	);
 }

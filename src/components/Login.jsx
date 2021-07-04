@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import { makeStyles, TextField } from "@material-ui/core";
+import { Button, Box } from "@material-ui/core";
 
 export default function Login(props) {
 	const [email, setEmail] = useState("");
@@ -10,6 +12,18 @@ export default function Login(props) {
 	const [loading, setLoading] = useState(false);
 	let { user, login } = useContext(AuthContext);
 	const history = useHistory();
+
+	const useStyles = makeStyles(() => ({
+		email: {
+			width: "300px",
+			margin: "10px",
+		},
+		password: {
+			width: "300px",
+			margin: "20px",
+		},
+	}));
+
 	if (user !== null) {
 		history.push("/");
 	}
@@ -22,8 +36,8 @@ export default function Login(props) {
 			props.history.push("/");
 		} catch (err) {
 			setLoading(false);
-			console.log(err);
-			alert("Not authorized");
+			let error = err.code.split("/")[1];
+			alert(error);
 			setEmail("");
 			setPassword("");
 		}
@@ -33,44 +47,54 @@ export default function Login(props) {
 		history.push("/signup");
 	};
 
+	const classes = useStyles();
+
 	return (
-		<div className="login-form">
-			<label htmlFor="email">
-				Email:
-				<input
-					type="email"
-					name="email"
+		<div className="login-card">
+			<form noValidate autoComplete="off">
+				<TextField
+					className={classes.email}
+					label="Email"
+					variant="outlined"
 					value={email}
 					onChange={(e) => {
 						setEmail(e.target.value);
 					}}
+					size="small"
 				/>
-			</label>
-			<br />
-			<label htmlFor="password">
-				Password:
-				<input
+				<br />
+				<TextField
+					className={classes.password}
+					label="Password"
 					type="password"
-					name="password"
+					variant="outlined"
 					value={password}
 					onChange={(e) => {
 						setPassword(e.target.value);
 					}}
+					size="small"
 				/>
-			</label>
-			<br />
-			<input
-				type="button"
-				value="Submit"
-				onClick={handleSubmit}
-				disabled={loading}
-			/>
-			<br />
-			<br />
-			<label htmlFor="signuppage">
+				<br />
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={handleSubmit}
+					disabled={loading}
+				>
+					Login
+				</Button>
+			</form>
+			<Box fontStyle="normal" textAlign="center" m={1}>
 				Dont have an account?
-				<input type="button" value="Signup" onClick={gotoSignup} />
-			</label>
+				<Button
+					variant="outlined"
+					color="secondary"
+					size="small"
+					onClick={gotoSignup}
+				>
+					Signup
+				</Button>
+			</Box>
 		</div>
 	);
 }

@@ -24,10 +24,12 @@ export default function Post({ eachDoc }) {
 	};
 
 	return (
-		<div className="post-card">
+		<div className="post-card" style={{ "min-height": "350px;" }}>
 			{/* img */}
 			<img src={eachDoc.url} alt="" className="grid-img" />
-            {/* post date */}
+			{/* caption */}
+			<p>{eachDoc.caption}</p>
+			{/* post date */}
 			<p className="postDate">{eachDoc.date}</p>
 
 			{/* delete btn */}

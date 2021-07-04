@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { storage, firestore, timestamp } from "../firebase/firebaseConfig";
 
-const useStorage = (file) => {
+const useStorage = (file, caption) => {
 	const [progress, setProgress] = useState(0);
 	const [error, setError] = useState(null);
 	const [url, setUrl] = useState(null);
@@ -28,14 +28,14 @@ const useStorage = (file) => {
 				const url = await storageRef.getDownloadURL();
 				const createdAt = timestamp();
 				setDate(currDate);
-                console.log(currDate);
-				await collectionRef.add({ url, createdAt, date });
+				console.log(currDate);
+				await collectionRef.add({ url, createdAt, date, caption });
 				setUrl(url);
 			}
 		);
 	}, [file]);
 
-	return { progress, url, error, date };
+	return { progress, url, error, date, caption };
 };
 
 export default useStorage;
