@@ -1,5 +1,6 @@
 import React from "react";
 import { firestore, storage } from "../firebase/firebaseConfig";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function Post({ eachDoc }) {
 	const storageRef = storage.ref();
@@ -24,22 +25,27 @@ export default function Post({ eachDoc }) {
 	};
 
 	return (
-		<div className="post-card" style={{ "min-height": "350px;" }}>
+		<div className="post-card">
 			{/* img */}
 			<img src={eachDoc.url} alt="" className="grid-img" />
-			{/* caption */}
-			<p>{eachDoc.caption}</p>
-			{/* post date */}
-			<p className="postDate">{eachDoc.date}</p>
-
-			{/* delete btn */}
-			<button
-				onClick={() => deleteImg(eachDoc.id, eachDoc.url)}
-				name={eachDoc.id}
-				className="deleteBtn"
-			>
-				Delete
-			</button>
+			<div className="post-info">
+				<div className="post-desc">
+					{/* caption */}
+					<p className="caption" >{eachDoc.caption}</p>
+					{/* post date */}
+					<small className="postDate">{eachDoc.date}</small>
+				</div>
+				<div className="deleteBtn">
+					{/* delete btn */}
+					<DeleteIcon titleAccess="Delete post"
+						onClick={() => deleteImg(eachDoc.id, eachDoc.url)}
+						name={eachDoc.id}
+						className="deleteBtn"
+					>
+						Delete
+					</DeleteIcon>
+				</div>
+			</div>
 		</div>
 	);
 }

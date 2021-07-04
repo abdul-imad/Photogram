@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import { TextareaAutosize, Button, makeStyles } from "@material-ui/core";
+import CheckIcon from "@material-ui/icons/Check";
 
 export default function UploadPost() {
 	const [file, setFile] = useState();
@@ -15,14 +16,14 @@ export default function UploadPost() {
 		},
 		alertText: {
 			position: "absolute",
-			top: "100px",
+			top: "7rem",
 			textAlign: "center",
 		},
 		postBtn: {
 			background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
 			borderRadius: 3,
 			border: 0,
-            marginTop:"40px",
+			marginTop: "40px",
 			color: "white",
 			height: 45,
 			padding: "0 30px",
@@ -57,7 +58,7 @@ export default function UploadPost() {
 						color="secondary"
 						component="label"
 					>
-						Upload File
+						Upload Image
 						<input
 							type="file"
 							accept="image/*"
@@ -66,7 +67,12 @@ export default function UploadPost() {
 						/>
 					</Button>
 					<br />
-					{imgSelected && <p className={classes.alertText}>Image Selected</p>}
+					{imgSelected && (
+						<p className={classes.alertText}>
+							<CheckIcon />
+							Image Selected
+						</p>
+					)}
 
 					<TextareaAutosize
 						className="caption-input"
@@ -84,7 +90,12 @@ export default function UploadPost() {
 			<div className="outout">
 				{file && <div>Uploading...</div>}
 				{file && (
-					<ProgressBar file={file} setFile={setFile} caption={caption}  setCaption={setCaption}/>
+					<ProgressBar
+						file={file}
+						setFile={setFile}
+						caption={caption}
+						setCaption={setCaption}
+					/>
 				)}
 			</div>
 		</div>
