@@ -15,11 +15,11 @@ export default function Login(props) {
 
 	const useStyles = makeStyles(() => ({
 		email: {
-			width: "300px",
+			width: "90%",
 			margin: "10px",
 		},
 		password: {
-			width: "300px",
+			width: "90%",
 			margin: "20px",
 		},
 	}));
